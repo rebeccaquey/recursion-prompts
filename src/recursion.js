@@ -33,20 +33,60 @@ var sum = function (array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function (array) {
-  var copyOfArr = array.slice().flat(Infinity);
-  // console.log(copyOfArr);
-  var totalSum = copyOfArr[0];
-  if (array.length === 0) {
-    return 0;
-  } else {
-    copyOfArr.shift();
-    totalSum += arraySum(copyOfArr);
+  // SOLUTION 1: (using flat to flatten array)
+  // var copyOfArr = array.slice().flat(Infinity);
+  // // console.log(copyOfArr);
+  // var totalSum = copyOfArr[0];
+  // if (array.length === 0) {
+  //   return 0;
+  // } else {
+  //   copyOfArr.shift();
+  //   totalSum += arraySum(copyOfArr);
+  // }
+  // return totalSum;
+
+  // SOLUTION 2: 
+  var totalSum = 0;
+  for (var i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      totalSum += arraySum(array[i]);
+    } else {
+      totalSum += array[i];
+    }
   }
   return totalSum;
+
 };
 
 // 4. Check if a number is even.
 var isEven = function (n) {
+  var bool = true;
+  // console.log(n)
+  if (n >= 0) {
+    if (n === 0) {
+      bool = true;
+    } else if (n === 1) {
+      bool = false;
+    } else {
+      return isEven(n - 2);
+    }
+  } else if (n < 0) {
+    if (n === -2) {
+      bool = true;
+    } else if (n === -1) {
+      bool = false;
+    } else {
+      return isEven(n + 2);
+    }
+  }
+  return bool;
+  // return bool;
+  // return bool;
+  // if (Number.isInteger(n / 2)) {
+  //   bool = true;;
+  // }
+  // n
+  // return bool;
 };
 
 // 5. Sum all integers below a given integer.
