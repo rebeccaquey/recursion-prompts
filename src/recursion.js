@@ -93,11 +93,70 @@ var isEven = function (n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function (n) {
+  if (n === 0 || n === 1 || n === -1) {
+    return 0;
+  } else if (n > 1) {
+    return (n - 1) + sumBelow(n - 1);
+  } else if (n < -1) {
+    return (n + 1) + sumBelow(n + 1);
+  }
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function (x, y) {
+  //input: two numbers -- range
+  //output: array of numbers in between x and y
+  //need to call itself.. 
+
+  // SOLUTION 1: (using inner recursion)
+  // var insideRange = [];
+  // var newRange = function (a, b) {
+  //   if (a <= b) {
+  //     if (a === (b - 1) || a === b) {
+  //       return insideRange;
+  //     } else {
+  //       insideRange.push(a + 1);
+  //       return newRange(a + 1, b);
+  //     }
+  //   } else if (a > b) {
+  //     if ((a - 1) === b) {
+  //       return insideRange;
+  //     } else {
+  //       insideRange.push(a - 1);
+  //       return newRange(a - 1, b);
+  //     }
+  //   }
+  // }
+  // newRange(x, y);
+  // return insideRange;
+
+  // SOLUTION 2: (using pure recursion)
+  //check if x is less than or equal to y
+  if (x <= y) {
+    //if x equals y or x equals y-1, we return an array
+    if (x === y || x === (y - 1)) {
+      return [];
+      //otherwise, we call our function with a smaller range and check if that number satisfies our first condition
+    } else {
+      var numbers = range(x, y - 1);
+      //after it satisfies the x=y or x=y-1 condition, we will push the number and return
+      numbers.push(y - 1);
+      return numbers;
+    }
+    //if x is greater than y:
+  } else {
+    //if x equals y+1, then we return an array
+    if (x === (y + 1)) {
+      return [];
+      //otherwise, we call our function with a smaller range and check if that number satisfies our first condition
+    } else {
+      var numbers = range(x, y + 1);
+      //after it satisfies the x=y or x=y+1 condition, we will push the number and return
+      numbers.push(y + 1);
+      return numbers;
+    }
+  }
 };
 
 // 7. Compute the exponent of a number.
