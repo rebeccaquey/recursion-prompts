@@ -202,22 +202,26 @@ var powerOfTwo = function (n) {
   //if n = 0, false; if n = 1, true; if n = 2, true;
   // try loggo ! try the crow wow hehe
 
-
-  if (n <= 0) {
-    return false;
-  } else if (n === 1 || n === 2) {
+  if (n === 1 || n === 2) {
     return true;
-  } else {
-    var power = Math.pow(2, n)
-    // console.log(power);
-    // if (
-    // if (power === powerOfTwo(n - 1)) {
-    // return true;
-    // } else {
-    // console.log(n)
-    powerOfTwo(n - 1);
-    // }
+  } else if (n <= 0 || n % 2 !== 0) {
+    return false;
   }
+  return powerOfTwo(n / 2);
+
+  // var logarithm = Math.log2(n)
+  // if (Number.isInteger(logarithm)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  // if (
+  // if (power === powerOfTwo(n - 1)) {
+  // return true;
+  // } else {
+  // console.log(n)
+  // powerOfTwo(n - 1);
+  // }
 
 };
 
