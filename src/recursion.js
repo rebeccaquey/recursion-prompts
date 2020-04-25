@@ -200,20 +200,23 @@ var powerOfTwo = function (n) {
   //check exponents of 2, if n is one of the powers, return true; else, return false;
   //check if poweroftwo(n) === n, then check if poweroftwo(n-1) === n, etc.
   //if n = 0, false; if n = 1, true; if n = 2, true;
+  // try loggo ! try the crow wow hehe
+
 
   if (n <= 0) {
     return false;
-  } else if (n === 1) {
+  } else if (n === 1 || n === 2) {
     return true;
   } else {
     var power = Math.pow(2, n)
     // console.log(power);
-    if (power === n) {
-      return true;
-    } else {
-      // console.log(n)
-      return powerOfTwo(n - 1);
-    }
+    // if (
+    // if (power === powerOfTwo(n - 1)) {
+    // return true;
+    // } else {
+    // console.log(n)
+    powerOfTwo(n - 1);
+    // }
   }
 
 };
@@ -251,7 +254,72 @@ var palindrome = function (string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+
+//can't use complex math, only simple. Use - or +.
+
+//i: two numbers
+//o: one number
+//edgecases: if x is less than y, if x or y are negative, if x is 0, if y is 0
+
+//disregarding the sign, if x is less than y, return value should be x (just do the value, and then add the sign back on after) --- it will always take the sign of the dividend (x)
+//if y is 0, return NaN
+//if x is 0, return 0
+// var absoluteX = Math.abs(x);
+// var absoluteY = Math.abs(y);
+// if (absoluteX < absoluteY) {
+//   return x;
+// } else {
+//   if (absoluteX - absoluteY === 0) {
+//     return 0;
+//   } else if (x > 0) {
+//     return modulo((x - absoluteY), y)
+//   } else {
+//     return modulo((x + absoluteY), y)
+//   }
+// }
+
 var modulo = function (x, y) {
+
+  if (y === 0) {
+    return NaN;
+  } else if (x === 0) {
+    return 0;
+  }
+  if (x < 0 && y > 0) {
+    var absoluteX = -x;
+    if (absoluteX < y) {
+      return x;
+    } else {
+      if (absoluteX - y === 0) {
+        return 0;
+      } else {
+        return modulo((x + y), y);
+      }
+    }
+  } else if (x >= 0) {
+    if (x < y) {
+      return x;
+    } else {
+      if (x - y === 0) {
+        return 0;
+      } else {
+        return modulo((x - y), y);
+      }
+    }
+  } else {
+    if (x > y) {
+      return x;
+    } else {
+      if (y < 0) {
+        return modulo((x - y), y);
+      } else {
+        return modulo((x + y), y);
+      }
+    }
+  }
+
+
+
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
