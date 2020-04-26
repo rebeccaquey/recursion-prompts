@@ -328,7 +328,36 @@ var modulo = function (x, y) {
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
+//i: two numbers
+//o: one number
+//cant use complex math
+//edge:if one or both are negative, if one or both are 0
+//create a total variable
+//find larger argument (x or y) and add that number to total, then call multiply with the smaller number - 1; or can just add x to total y amount of times. 
 var multiply = function (x, y) {
+  var product = 0;
+  if (x === 0 || y === 0) {
+    return product;
+  } else if (x === 1) {
+    product += y;
+    return product;
+  } else if (y === 1) {
+    product += x;
+    return product;
+  } else if (x === -1) {
+    product -= y;
+    return product;
+  } else if (y === -1) {
+    product -= x;
+    return product;
+  } else {
+    if (y > 0) {
+      return product += x + multiply(x, y - 1);
+    } else if (y < 0) {
+      return product -= x - multiply(x, y + 1);
+    }
+  }
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
