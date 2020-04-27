@@ -334,21 +334,10 @@ var modulo = function (x, y) {
 //edge:if one or both are negative, if one or both are 0
 //create a total variable
 //find larger argument (x or y) and add that number to total, then call multiply with the smaller number - 1; or can just add x to total y amount of times. 
+
 var multiply = function (x, y) {
   var product = 0;
   if (x === 0 || y === 0) {
-    return product;
-  } else if (x === 1) {
-    product += y;
-    return product;
-  } else if (y === 1) {
-    product += x;
-    return product;
-  } else if (x === -1) {
-    product -= y;
-    return product;
-  } else if (y === -1) {
-    product -= x;
     return product;
   } else {
     if (y > 0) {
@@ -357,7 +346,6 @@ var multiply = function (x, y) {
       return product -= x - multiply(x, y + 1);
     }
   }
-
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
@@ -378,6 +366,12 @@ var gcd = function (x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function (str1, str2) {
+  //i: two strings
+  //o: boolean
+  //e: empty strings
+  //if lengths are different, return false;
+  //else compare first index of each string and then substring it and call it with the string
+  // if ()
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
